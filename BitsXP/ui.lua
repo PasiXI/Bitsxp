@@ -148,9 +148,9 @@ function updateUI()
   updateXPRate()
 
   local info = windower.ffxi.get_player()
-  if not info then return '' 
-  end 
-  local 
+  if not info then return ''
+  end
+  local
   string = ' '..buildJobLabel(info)..white(' | ')
   string = string..buildXPLabel()..white(' | ')
   string = string..buildTNLLabel()..white(' | ')
@@ -168,7 +168,7 @@ function buildJobLabel(info)
   local sJob = (info.sub_job and string.upper(info.sub_job))
   local ssJob = (info.sub_job_level and string.upper(info.sub_job_level))
 
-  return white('Lv. '..pJob..''..level..'/'..sJob..''..slevel)
+  return white('Lv. '..pJob..''..level..'/'..(sJob or '-')..''..(slevel or ''))
 end
 
 function buildXPLabel()
@@ -204,7 +204,7 @@ function buildNextChainLabel()
     local nextChain = UI.chainNo + 1
     return 'Next Chain #'..ice(nextChain)..white(' has ')..ice(calculateTimeLeftForNextChain(chainTimer))..white(' left')
   end
-  
+
   return ''
 end
 
